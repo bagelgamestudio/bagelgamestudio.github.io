@@ -14,8 +14,8 @@ window.onload = function() {
     x: canvas.width / 2 - 10,
     y: canvas.height / 2 - 10,
     width: 20,
-    height: 20
-    alive: true;
+    height: 20,
+    alive: true
   };
   
   var crusher = {
@@ -115,40 +115,41 @@ window.onload = function() {
     c.fillStyle = "rgba(255, 255, 255, 0.3)";
     c.fillRect(0, 0, canvas.width, canvas.height);
 	
-	if(crusher.top.left.y <= canvas.height) {
-		crusher.top.left.y += speed;
-		crusher.top.right.y += speed;
-		crusher.left.top.x += speed;
-		crusher.left.bottom.x += speed;
-	} else {
-		gapPosTop = Math.floor((Math.random() * canvas.width * 2 / 5) + (canvas.width / 2));
-		gapPosLeft = Math.floor((Math.random() * canvas.height * 2 / 5) + (canvas.height / 2));
-		
-		crusher.top.left.width = gapPosTop;
-		crusher.top.right.x = gapPosTop + 60;
-		crusher.top.right.width = canvas.width - (gapPosTop + 60);
-		
-		crusher.left.top.height = gapPosLeft;
-		crusher.left.bottom.y = gapPosLeft + 60;
-		crusher.left.bottom.height = canvas.width - (gapPosLeft + 60);
-		
-		crusher.top.left.y = 0;
-		crusher.top.right.y = 0;
-		crusher.left.top.x = 0;
-		crusher.left.bottom.x = 0;
-		
-		if(speed <= 4) {
-			speed += 0.5;
-		} else if(speed <= 5){
-			speed += 0.1;
-		}
-		
-		if(player.alive = true){
-		    score++;
-		    ctx.font = "15px Arial";
-            ctx.fillText("Score: " + score,10,10);
-		}
-	}
+	
+	if(player.alive === true) {
+    	if(crusher.top.left.y <= canvas.height) {
+    		crusher.top.left.y += speed;
+    		crusher.top.right.y += speed;
+    		crusher.left.top.x += speed;
+    		crusher.left.bottom.x += speed;
+    	} else {
+    		gapPosTop = Math.floor((Math.random() * canvas.width * 2 / 5) + (canvas.width / 2));
+    		gapPosLeft = Math.floor((Math.random() * canvas.height * 2 / 5) + (canvas.height / 2));
+    		
+    		crusher.top.left.width = gapPosTop;
+    		crusher.top.right.x = gapPosTop + 60;
+    		crusher.top.right.width = canvas.width - (gapPosTop + 60);
+    		
+    		crusher.left.top.height = gapPosLeft;
+    		crusher.left.bottom.y = gapPosLeft + 60;
+    		crusher.left.bottom.height = canvas.width - (gapPosLeft + 60);
+    		
+    		crusher.top.left.y = 0;
+    		crusher.top.right.y = 0;
+    		crusher.left.top.x = 0;
+    		crusher.left.bottom.x = 0;
+    		
+    		if(speed <= 5) {
+    			speed += 0.5;
+    		} else if(speed <= 7.5){
+    			speed += 0.1;
+    		}
+    	}
+    
+    c.fillStyle = "black";
+    c.font = "25px Courier New";
+    c.fillText("Score: " + score, 40, 40);
+    c.fillText("Speed: " + speed, 40, 80);
 	
 	if((player.x + player.width >= crusher.top.left.x) && (player.x <= crusher.top.left.x + crusher.top.left.width) && (player.y + player.width >= crusher.top.left.y) && (player.y <= crusher.top.left.y + crusher.top.left.height)) {
 	    player.alive = false;
@@ -169,6 +170,10 @@ window.onload = function() {
 	if(player.alive === true) {
         c.fillStyle = "#00aaaa";
         c.fillRect(player.x, player.y, player.width, player.height);
+	}
+	} else {
+        c.fillStyle = "black";
+        c.fillText("Score: " + score, 195, 245);
 	}
   }, 30);
 };
