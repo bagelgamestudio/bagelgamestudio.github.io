@@ -5,10 +5,11 @@ window.onload = function() {
   var keyDownY;
   var keyAlreadyDownX = 0;
   var keyAlreadyDownY = 0;
-  var gapPosTop = Math.floor((Math.random() * canvas.width * 2 / 5) + (canvas.width / 2));
-  var gapPosLeft = Math.floor((Math.random() * canvas.height * 2 / 5) + (canvas.height / 2));
+  var gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
+  var gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
   var speed = 1;
   var score = 0;
+  var levelCounter = 0;
   
   var player = {
     x: canvas.width / 2 - 10,
@@ -31,7 +32,8 @@ window.onload = function() {
 			  y: 0,
 			  width: 220,
 			  height: 40
-		  }
+		  },
+		  direction: 1
 	  },
 	  left: {
 		  top: {
@@ -45,7 +47,8 @@ window.onload = function() {
 			  y: 280,
 			  width: 40,
 			  height: 220
-		  }
+		  },
+		  direction: 1
 	  }
   };
   
@@ -117,27 +120,59 @@ window.onload = function() {
 	
 	
 	if(player.alive === true) {
-    	if(crusher.top.left.y <= canvas.height) {
-    		crusher.top.left.y += speed;
-    		crusher.top.right.y += speed;
-    		crusher.left.top.x += speed;
-    		crusher.left.bottom.x += speed;
+    	if(levelCounter <= 500) {
+    		crusher.top.left.y += speed * crusher.top.direction;
+    		crusher.top.right.y += speed * crusher.top.direction;
+    		crusher.left.top.x += speed * crusher.left.direction;
+    		crusher.left.bottom.x += speed * crusher.left.direction;
+    		levelCounter += speed;
     	} else {
-    		gapPosTop = Math.floor((Math.random() * canvas.width * 2 / 5) + (canvas.width / 2));
-    		gapPosLeft = Math.floor((Math.random() * canvas.height * 2 / 5) + (canvas.height / 2));
+    	    crusher.top.direction = Math.floor(Math.random()*2);
+    	    if(crusher.top.direction === 0) {
+    	        crusher.top.direction = -1;
+    	    }
+    	    
+    	    crusher.left.direction = Math.floor(Math.random()*2);
+    	    if(crusher.left.direction === 0) {
+    	        crusher.left.direction = -1;
+    	    }
+    	    
+    		gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
+    		gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
     		
-    		crusher.top.left.width = gapPosTop;
-    		crusher.top.right.x = gapPosTop + 60;
-    		crusher.top.right.width = canvas.width - (gapPosTop + 60);
+    		if(crusher.top.direction === 1) {
+        		crusher.top.left.y = 0;
+        		crusher.top.right.y = 0;
     		
-    		crusher.left.top.height = gapPosLeft;
-    		crusher.left.bottom.y = gapPosLeft + 60;
-    		crusher.left.bottom.height = canvas.width - (gapPosLeft + 60);
+        		crusher.top.left.width = gapPosTop;
+        		crusher.top.right.x = gapPosTop + 60;
+        		crusher.top.right.width = canvas.width - (gapPosTop + 60);
+    		} else {
+        		crusher.top.left.y = canvas.height - crusher.top.left.height;
+        		crusher.top.right.y = canvas.height - crusher.top.right.height;
     		
-    		crusher.top.left.y = 0;
-    		crusher.top.right.y = 0;
-    		crusher.left.top.x = 0;
-    		crusher.left.bottom.x = 0;
+        		crusher.top.left.width = gapPosTop;
+        		crusher.top.right.x = gapPosTop + 60;
+        		crusher.top.right.width = canvas.width - (gapPosTop + 60);
+    		}
+    		
+    		if(crusher.left.direction === 1) {
+        		crusher.left.top.x = 0;
+        		crusher.left.bottom.x = 0;
+    		
+        		crusher.left.top.height = gapPosLeft;
+        		crusher.left.bottom.y = gapPosLeft + 60;
+        		crusher.left.bottom.height = canvas.width - (gapPosLeft + 60);
+    		} else {
+        		crusher.left.top.x = canvas.width - crusher.left.top.width;
+        		crusher.left.bottom.x = canvas.width - crusher.left.bottom.width;
+    		
+        		crusher.left.top.height = gapPosLeft;
+        		crusher.left.bottom.y = gapPosLeft + 60;
+        		crusher.left.bottom.height = canvas.width - (gapPosLeft + 60);
+    		}
+    		
+    		levelCounter = 0;
     		
             score++;
     		if(speed <= 5) {
@@ -150,7 +185,6 @@ window.onload = function() {
         c.fillStyle = "black";
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 40, 40);
-        c.fillText("Speed: " + speed, 40, 80);
     	
     	if((player.x + player.width >= crusher.top.left.x) && (player.x <= crusher.top.left.x + crusher.top.left.width) && (player.y + player.width >= crusher.top.left.y) && (player.y <= crusher.top.left.y + crusher.top.left.height)) {
     	    player.alive = false;
