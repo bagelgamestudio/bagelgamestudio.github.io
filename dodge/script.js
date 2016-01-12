@@ -139,38 +139,37 @@ window.onload = function() {
     		crusher.left.top.x = 0;
     		crusher.left.bottom.x = 0;
     		
+            score++;
     		if(speed <= 5) {
     			speed += 0.5;
     		} else if(speed <= 7.5){
     			speed += 0.1;
     		}
     	}
-    
-    c.fillStyle = "black";
-    c.font = "25px Courier New";
-    c.fillText("Score: " + score, 40, 40);
-    c.fillText("Speed: " + speed, 40, 80);
-	
-	if((player.x + player.width >= crusher.top.left.x) && (player.x <= crusher.top.left.x + crusher.top.left.width) && (player.y + player.width >= crusher.top.left.y) && (player.y <= crusher.top.left.y + crusher.top.left.height)) {
-	    player.alive = false;
-	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
-	    player.alive = false;
-    } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
-        player.alive = false;
-    } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
-        player.alive = false;
-    }
-    
-	c.fillStyle = "#ff6666";
-	c.fillRect(crusher.top.left.x, crusher.top.left.y, crusher.top.left.width, crusher.top.left.height);
-	c.fillRect(crusher.top.right.x, crusher.top.right.y, crusher.top.right.width, crusher.top.right.height);
-	c.fillRect(crusher.left.top.x, crusher.left.top.y, crusher.left.top.width, crusher.left.top.height);
-	c.fillRect(crusher.left.bottom.x, crusher.left.bottom.y, crusher.left.bottom.width, crusher.left.bottom.height);
-	
-	if(player.alive === true) {
+    	
+        c.fillStyle = "black";
+        c.font = "25px Courier New";
+        c.fillText("Score: " + score, 40, 40);
+        c.fillText("Speed: " + speed, 40, 80);
+    	
+    	if((player.x + player.width >= crusher.top.left.x) && (player.x <= crusher.top.left.x + crusher.top.left.width) && (player.y + player.width >= crusher.top.left.y) && (player.y <= crusher.top.left.y + crusher.top.left.height)) {
+    	    player.alive = false;
+    	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
+    	    player.alive = false;
+        } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
+            player.alive = false;
+        } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
+            player.alive = false;
+        }
+        
+    	c.fillStyle = "#ff6666";
+    	c.fillRect(crusher.top.left.x, crusher.top.left.y, crusher.top.left.width, crusher.top.left.height);
+    	c.fillRect(crusher.top.right.x, crusher.top.right.y, crusher.top.right.width, crusher.top.right.height);
+    	c.fillRect(crusher.left.top.x, crusher.left.top.y, crusher.left.top.width, crusher.left.top.height);
+    	c.fillRect(crusher.left.bottom.x, crusher.left.bottom.y, crusher.left.bottom.width, crusher.left.bottom.height);
+        
         c.fillStyle = "#00aaaa";
         c.fillRect(player.x, player.y, player.width, player.height);
-	}
 	} else {
         c.fillStyle = "black";
         c.fillText("Score: " + score, 195, 245);
