@@ -97,6 +97,7 @@ window.onload = function() {
       case 32:
         if(player.alive === false) {
             player.alive = true;
+            score = 0;
         }
       default:
     }
@@ -216,7 +217,6 @@ window.onload = function() {
         gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
         gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
         speed = 1;
-        score = 0;
         levelCounter = 0;
   
         player = {
