@@ -59,7 +59,7 @@ window.onload = function() {
           keyAlreadyDownX = 1;
           keyDownX = setInterval(function() {
 			  if(player.x >= 0) {
-				player.x -= 4;
+				player.x -= 5;
 			  }
           }, 30);
         }
@@ -69,7 +69,7 @@ window.onload = function() {
           keyAlreadyDownY = 1;
           keyDownY = setInterval(function() {
 			  if(player.y >= 0) {
-				  player.y -= 4;  
+				  player.y -= 5;  
 			  }
           }, 30);
         }
@@ -79,7 +79,7 @@ window.onload = function() {
           keyAlreadyDownX = 1;
           keyDownX = setInterval(function() {
 			  if(player.x + player.width <= canvas.width) {
-				player.x += 4;
+				player.x += 5;
 			  }
           }, 30);
         }
@@ -89,11 +89,15 @@ window.onload = function() {
           keyAlreadyDownY = 1;
           keyDownY = setInterval(function() {
 			  if(player.y + player.width <= canvas.height) {
-				  player.y += 4;  
+				  player.y += 5;
 			  }
           }, 30);
         }
         break;
+      case 32:
+        if(player.alive === false) {
+            player.alive = true;
+        }
       default:
     }
   });
@@ -207,6 +211,54 @@ window.onload = function() {
 	} else {
         c.fillStyle = "black";
         c.fillText("Score: " + score, 195, 245);
+        c.fillText("[Space to Restart]", 120, 275);
+        
+        gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
+        gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
+        speed = 1;
+        score = 0;
+        levelCounter = 0;
+  
+        player = {
+            x: canvas.width / 2 - 10,
+            y: canvas.height / 2 - 10,
+            width: 20,
+            height: 20,
+            alive: false
+        };
+  
+        crusher = {
+          top: {
+        	  left: {
+        		  x: 0,
+        		  y: 0,
+        		  width: 220,
+        		  height: 40
+        	  },
+        	  right: {
+        		  x: 280,
+        		  y: 0,
+        		  width: 220,
+        		  height: 40
+        	  },
+        	  direction: 1
+          },
+          left: {
+        	  top: {
+        		  x: 0,
+        		  y: 0,
+        		  width: 40,
+        		  height: 220
+        	  },
+        	  bottom: {
+        		  x: 0,
+        		  y: 280,
+        		  width: 40,
+        		  height: 220
+        	  },
+        	  direction: 1
+          }
+        };
 	}
   }, 30);
 };
