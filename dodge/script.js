@@ -10,7 +10,7 @@ window.onload = function() {
   var speed = 1;
   var score = 0;
   var levelCounter = 0;
-  
+
   var player = {
     x: canvas.width / 2 - 10,
     y: canvas.height / 2 - 10,
@@ -18,6 +18,29 @@ window.onload = function() {
     height: 20,
     alive: true
   };
+  
+  function Particle(x, y) {
+      this.x = x;
+      this.y = y;
+      this.vx = Math.random()*10 - 5;
+      this.vy = Math.random()*-10;
+  }
+    
+  var p1 = new Particle(player.x, player.y);
+  var p2 = new Particle(player.x, player.y);
+  var p3 = new Particle(player.x, player.y);
+  var p4 = new Particle(player.x, player.y);
+  var p5 = new Particle(player.x, player.y);
+  var p6 = new Particle(player.x, player.y);
+  var p7 = new Particle(player.x, player.y);
+  var p8 = new Particle(player.x, player.y);
+  var p9 = new Particle(player.x, player.y);
+  var p10 = new Particle(player.x, player.y);
+  var p11 = new Particle(player.x, player.y);
+  var p12 = new Particle(player.x, player.y);
+  var p13 = new Particle(player.x, player.y);
+  var p14 = new Particle(player.x, player.y);
+  var p15 = new Particle(player.x, player.y);
   
   var crusher = {
 	  top: {
@@ -51,6 +74,39 @@ window.onload = function() {
 		  direction: 1
 	  }
   };
+  
+  function addParticles() {
+      p1.x = player.x;
+      p1.y = player.y;
+      p2.x = player.x;
+      p2.y = player.y;
+      p3.x = player.x;
+      p3.y = player.y;
+      p4.x = player.x;
+      p4.y = player.y;
+      p5.x = player.x;
+      p5.y = player.y;
+      p6.x = player.x;
+      p6.y = player.y;
+      p7.x = player.x;
+      p7.y = player.y;
+      p8.x = player.x;
+      p8.y = player.y;
+      p9.x = player.x;
+      p9.y = player.y;
+      p10.x = player.x;
+      p10.y = player.y;
+      p11.x = player.x;
+      p11.y = player.y;
+      p12.x = player.x;
+      p12.y = player.y;
+      p13.x = player.x;
+      p13.y = player.y;
+      p14.x = player.x;
+      p14.y = player.y;
+      p15.x = player.x;
+      p15.y = player.y;
+  }
   
   document.body.addEventListener('keydown', function(e) {
     switch(e.which) {
@@ -123,7 +179,6 @@ window.onload = function() {
     c.fillStyle = "rgba(255, 255, 255, 0.3)";
     c.fillRect(0, 0, canvas.width, canvas.height);
 	
-	
 	if(player.alive === true) {
     	if(levelCounter <= 500) {
     		crusher.top.left.y += speed * crusher.top.direction;
@@ -193,12 +248,16 @@ window.onload = function() {
     	
     	if((player.x + player.width >= crusher.top.left.x) && (player.x <= crusher.top.left.x + crusher.top.left.width) && (player.y + player.width >= crusher.top.left.y) && (player.y <= crusher.top.left.y + crusher.top.left.height)) {
     	    player.alive = false;
+            addParticles();
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
+            addParticles();
         } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
             player.alive = false;
+            addParticles();
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
             player.alive = false;
+            addParticles();
         }
         
     	c.fillStyle = "#ff6666";
@@ -213,6 +272,83 @@ window.onload = function() {
         c.fillStyle = "black";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
+        
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+        p1.vy += 0.3;
+        
+        p2.x += p2.vx;
+        p2.y += p2.vy;
+        p2.vy += 0.3;
+        
+        p3.x += p3.vx;
+        p3.y += p3.vy;
+        p3.vy += 0.3;
+        
+        p4.x += p4.vx;
+        p4.y += p4.vy;
+        p4.vy += 0.3;
+        
+        p5.x += p5.vx;
+        p5.y += p5.vy;
+        p5.vy += 0.3;
+        
+        p6.x += p6.vx;
+        p6.y += p6.vy;
+        p6.vy += 0.3;
+        
+        p7.x += p7.vx;
+        p7.y += p7.vy;
+        p7.vy += 0.3;
+        
+        p8.x += p8.vx;
+        p8.y += p8.vy;
+        p8.vy += 0.3;
+        
+        p9.x += p9.vx;
+        p9.y += p9.vy;
+        p9.vy += 0.3;
+        
+        p10.x += p10.vx;
+        p10.y += p10.vy;
+        p10.vy += 0.3;
+        
+        p11.x += p11.vx;
+        p11.y += p11.vy;
+        p11.vy += 0.3;
+        
+        p12.x += p12.vx;
+        p12.y += p12.vy;
+        p12.vy += 0.3;
+        
+        p13.x += p13.vx;
+        p13.y += p13.vy;
+        p13.vy += 0.3;
+        
+        p14.x += p14.vx;
+        p14.y += p14.vy;
+        p14.vy += 0.3;
+        
+        p15.x += p15.vx;
+        p15.y += p15.vy;
+        p15.vy += 0.3;
+        
+        c.fillStyle = "#11aaaa";
+        c.fillRect(p1.x, p1.y, 5, 5);
+        c.fillRect(p2.x, p2.y, 5, 5);
+        c.fillRect(p3.x, p3.y, 5, 5);
+        c.fillRect(p4.x, p4.y, 5, 5);
+        c.fillRect(p5.x, p5.y, 5, 5);
+        c.fillRect(p6.x, p6.y, 5, 5);
+        c.fillRect(p7.x, p7.y, 5, 5);
+        c.fillRect(p8.x, p8.y, 5, 5);
+        c.fillRect(p9.x, p9.y, 5, 5);
+        c.fillRect(p10.x, p10.y, 5, 5);
+        c.fillRect(p11.x, p11.y, 5, 5);
+        c.fillRect(p12.x, p12.y, 5, 5);
+        c.fillRect(p13.x, p13.y, 5, 5);
+        c.fillRect(p14.x, p14.y, 5, 5);
+        c.fillRect(p15.x, p15.y, 5, 5);
         
         gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
         gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
