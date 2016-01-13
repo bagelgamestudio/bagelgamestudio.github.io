@@ -6,24 +6,64 @@ window.onload = function() {
   var countX = 0;
   var gravity = 0.5;
 	var i;
-	var willRunInto = 0;
+	var willRunIntoL = 0;
+	var willRunIntoR = 0;
+	var willRunIntoG = 0;
+	var setY = 0;
+	
+	var level = ["0","0","0","0","0","1","0","0","0","0",
+	             "0","0","0","0","0","1","0","0","0","0",
+	             "1","1","1","1","0","1","1","0","0","0",
+	             "0","0","0","0","0","1","0","1","0","0",
+	             "0","1","1","1","1","1","0","0","0","1",
+	             "0","1","0","0","0","0","0","1","0","0",
+	             "0","0","0","0","0","0","1","0","1","1",
+	             "0","0","0","1","0","1","0","0","0","1",
+	             "0","1","0","0","0","0","0","0","0","1",
+	             "1","1","1","1","1","1","1","1","1","1",];
+	             
+	var curBoxG = {
+	  x: 0,
+	  y: 0,
+	  height: 40,
+	  width: 40
+	};
+	
+	var curBoxL = {
+	  x: 0,
+	  y: 0,
+	  height: 40,
+	  width: 40
+	};
+	
+	var curBoxR = {
+	  x: 0,
+	  y: 0,
+	  height: 40,
+	  width: 40
+	};
   
   var player = {
     x: 60,
     y: 20,
-    height: 20,
-    width: 20
+    height: 10,
+    width: 10
   };
-
-  var collisionBoxes = [{x: 50, y: 100, height: 40, width: 40}, {x: 150, y: 100, height: 40, width: 40}, {x: 10, y: 140, height: 40, width: 220}];
   
   function checkCollision() {
-    for(var i = 0; i < collisionBoxes.length; i++) {
-      if(((player.y + player.height >= collisionBoxes[i].y) && (player.y + player.height <= collisionBoxes[i].y + collisionBoxes[i].height)) && ((player.x + player.width - 2 >= collisionBoxes[i].x) && (player.x + 2 <= collisionBoxes[i].x + collisionBoxes[i].width))) {
-        gravity = 0;
-    	  player.y = collisionBoxes[i].y - player.height;
-      } else {
-    	  gravity += 0.1;
+    for(var i = 0; i < level.length; i++) {
+      if(level[i] === "1") {
+        curBoxG.x = (i % 10)*40;
+        curBoxG.y = Math.floor(i/10)*40;
+        
+        if(((player.y + player.height >= curBoxG.y) && (player.y + player.height <= curBoxG.y + curBoxG.height)) && ((player.x + player.width - 2 >= curBoxG.x) && (player.x + 2 <= curBoxG.x + curBoxG.width))) {
+      	  willRunIntoG = 1;
+      	  setY = curBoxG.y;
+        } else if(player.y + player.height >= canvas.height) {
+          gravity = 0;
+          player.y = canvas.height - player.height;
+          willRunIntoG = 2;
+        }
       }
     }
   }
@@ -31,6 +71,13 @@ window.onload = function() {
   function gravityFun() {
   	player.y += gravity;
   	checkCollision();
+    if(willRunIntoG === 1) {
+      gravity = 0;
+  	  player.y = setY - player.height;
+    } else if(willRunIntoG === 0) {
+  	  gravity += 0.1;
+    }
+    willRunIntoG = 0;
   }
 
   runGravity = setInterval(gravityFun, 10);
@@ -41,36 +88,46 @@ window.onload = function() {
       	if(countX === 0) {
         	countX = 1;
         	whileKeyDownX = setInterval(function() {
-            for(i = 0; i < collisionBoxes.length; i++) {
-              if(((player.x - 1 <= collisionBoxes[i].x + collisionBoxes[i].width) && (player.x + player.width <= collisionBoxes[i].x)) && ((player.y + player.height >= collisionBoxes[i].y) && (player.y <= collisionBoxes[i].y + collisionBoxes[i].height))) {
-                willRunInto = 1;
+            for(i = 0; i < level.length; i++) {
+              if(level[i] === "1") {
+                curBoxL.x = (i % 10)*40;
+                curBoxL.y = Math.floor(i/10)*40;
+                
+                if(((player.x + player.width - 1 >= curBoxL.x) && (player.x - 1 <= curBoxL.x + curBoxL.width)) && ((player.y + player.height - 1 >= curBoxL.y) && (player.y <= curBoxL.y + curBoxL.height - 1)) || (player.x <= 0)) {
+                  willRunIntoL = 1;
+                }
+                if(willRunIntoL === 0) {
+                  player.x -= 0.05;
+          	    }
+          	    willRunIntoL = 0;
               }
             }
-            if(willRunInto !== 1) {
-              player.x -= 1;
-        	  }
-        	  willRunInto = 0;
           }, 20);
       	}
         break;
     	case 38:
-        if(gravity === 0) {
-        	gravity = -6;
+        if(gravity === 0 || gravity === 0.2 || gravity === 0.1) {
+        	gravity = -3.5;
         }
         break;
     	case 39:
       	if(countX === 0) {
         	countX = 1;
         	whileKeyDownX = setInterval(function() {
-            for(i = 0; i < collisionBoxes.length; i++) {
-              if(((player.x + player.width + 1 >= collisionBoxes[i].x) && (player.x <= collisionBoxes[i].x + collisionBoxes[i].width)) && ((player.y + player.height - 1 >= collisionBoxes[i].y) && (player.y <= collisionBoxes[i].y + collisionBoxes[i].height))) {
-        	      willRunInto = 1;
-        	    }
+            for(i = 0; i < level.length; i++) {
+              if(level[i] === "1") {
+                curBoxR.x = (i % 10)*40;
+                curBoxR.y = Math.floor(i/10)*40;
+                
+                if(((player.x + player.width + 1 >= curBoxR.x) && (player.x + 1 <= curBoxR.x + curBoxR.width)) && ((player.y + player.height - 1 >= curBoxR.y) && (player.y <= curBoxR.y + curBoxR.height - 1)) || (player.x +player.width >= canvas.width)) {
+          	      willRunIntoR = 1;
+          	    }
+                if(willRunIntoR === 0) {
+                  player.x += 0.05;
+                }
+                willRunIntoR = 0;
+              }
             }
-            if(willRunInto !== 1) {
-              player.x += 1;
-            }
-            willRunInto = 0;
         	}, 20);
         }
         break;
@@ -79,7 +136,7 @@ window.onload = function() {
   });
 
   $(document).keyup(function(e) {
-	  if(e.which == 37 || e.which == 39) {
+	  if(e.which === 37 || e.which === 39) {
       countX = 0;
   	  clearInterval(whileKeyDownX);
     }
@@ -88,13 +145,22 @@ window.onload = function() {
   setInterval(function() {
     c.fillStyle = "rgba(255, 255, 255, 0.3)";
     c.fillRect(0, 0, canvas.width, canvas.height);
-    c.fillStyle = "#aa00aa";
-    for(i = 0; i < collisionBoxes.length; i++) {
-      c.fillRect(collisionBoxes[i].x, collisionBoxes[i].y, collisionBoxes[i].width, collisionBoxes[i].height);
+    
+    for(i = 0; i < level.length; i++) {
+      switch(level[i]) {
+        case "1":
+          c.fillStyle = "#aa00aa";
+          c.fillRect((i % 10)*40, Math.floor(i/10)*40, 40, 40);
+          break;
+        default:
+      }
     }
     
     c.fillStyle = "#00aaaa";
     c.fillRect(player.x, player.y, player.width, player.height);
+    
+    c.fillStyle = "black";
+    c.fillText(gravity, 20, 20);
   }, 30);
 };
 //player still link: http://makepixelart.com/peoplepods/files/images/2100034.original.png

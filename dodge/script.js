@@ -10,6 +10,8 @@ window.onload = function() {
   var speed = 1;
   var score = 0;
   var levelCounter = 0;
+  var p = [];
+  var i;
 
   var player = {
     x: canvas.width / 2 - 10,
@@ -18,29 +20,6 @@ window.onload = function() {
     height: 20,
     alive: true
   };
-  
-  function Particle(x, y) {
-      this.x = x;
-      this.y = y;
-      this.vx = Math.random()*10 - 5;
-      this.vy = Math.random()*-10;
-  }
-    
-  var p1 = new Particle(player.x, player.y);
-  var p2 = new Particle(player.x, player.y);
-  var p3 = new Particle(player.x, player.y);
-  var p4 = new Particle(player.x, player.y);
-  var p5 = new Particle(player.x, player.y);
-  var p6 = new Particle(player.x, player.y);
-  var p7 = new Particle(player.x, player.y);
-  var p8 = new Particle(player.x, player.y);
-  var p9 = new Particle(player.x, player.y);
-  var p10 = new Particle(player.x, player.y);
-  var p11 = new Particle(player.x, player.y);
-  var p12 = new Particle(player.x, player.y);
-  var p13 = new Particle(player.x, player.y);
-  var p14 = new Particle(player.x, player.y);
-  var p15 = new Particle(player.x, player.y);
   
   var crusher = {
 	  top: {
@@ -76,66 +55,9 @@ window.onload = function() {
   };
   
   function addParticles() {
-      p1.x = player.x;
-      p1.y = player.y;
-      p2.x = player.x;
-      p2.y = player.y;
-      p3.x = player.x;
-      p3.y = player.y;
-      p4.x = player.x;
-      p4.y = player.y;
-      p5.x = player.x;
-      p5.y = player.y;
-      p6.x = player.x;
-      p6.y = player.y;
-      p7.x = player.x;
-      p7.y = player.y;
-      p8.x = player.x;
-      p8.y = player.y;
-      p9.x = player.x;
-      p9.y = player.y;
-      p10.x = player.x;
-      p10.y = player.y;
-      p11.x = player.x;
-      p11.y = player.y;
-      p12.x = player.x;
-      p12.y = player.y;
-      p13.x = player.x;
-      p13.y = player.y;
-      p14.x = player.x;
-      p14.y = player.y;
-      p15.x = player.x;
-      p15.y = player.y;
-      p1.vx = Math.random()*10 - 5;
-      p1.vy = Math.random()*-10;
-      p2.vx = Math.random()*10 - 5;
-      p2.vy = Math.random()*-10;
-      p3.vx = Math.random()*10 - 5;
-      p3.vy = Math.random()*-10;
-      p4.vx = Math.random()*10 - 5;
-      p4.vy = Math.random()*-10;
-      p5.vx = Math.random()*10 - 5;
-      p5.vy = Math.random()*-10;
-      p6.vx = Math.random()*10 - 5;
-      p6.vy = Math.random()*-10;
-      p7.vx = Math.random()*10 - 5;
-      p7.vy = Math.random()*-10;
-      p8.vx = Math.random()*10 - 5;
-      p8.vy = Math.random()*-10;
-      p9.vx = Math.random()*10 - 5;
-      p9.vy = Math.random()*-10;
-      p10.vx = Math.random()*10 - 5;
-      p10.vy = Math.random()*-10;
-      p11.vx = Math.random()*10 - 5;
-      p11.vy = Math.random()*-10;
-      p12.vx = Math.random()*10 - 5;
-      p12.vy = Math.random()*-10;
-      p13.vx = Math.random()*10 - 5;
-      p13.vy = Math.random()*-10;
-      p14.vx = Math.random()*10 - 5;
-      p14.vy = Math.random()*-10;
-      p15.vx = Math.random()*10 - 5;
-      p15.vy = Math.random()*-10;
+      for(i = 0; i < 51; i++) {
+        p.push({x: player.x, y: player.y, vx: Math.random()*7 - 3.5, vy: Math.random()*-5});
+      }
   }
   
   document.body.addEventListener('keydown', function(e) {
@@ -185,6 +107,7 @@ window.onload = function() {
             player.alive = true;
             score = 0;
         }
+        break;
       default:
     }
   });
@@ -303,82 +226,14 @@ window.onload = function() {
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
         
-        p1.x += p1.vx;
-        p1.y += p1.vy;
-        p1.vy += 0.3;
-        
-        p2.x += p2.vx;
-        p2.y += p2.vy;
-        p2.vy += 0.3;
-        
-        p3.x += p3.vx;
-        p3.y += p3.vy;
-        p3.vy += 0.3;
-        
-        p4.x += p4.vx;
-        p4.y += p4.vy;
-        p4.vy += 0.3;
-        
-        p5.x += p5.vx;
-        p5.y += p5.vy;
-        p5.vy += 0.3;
-        
-        p6.x += p6.vx;
-        p6.y += p6.vy;
-        p6.vy += 0.3;
-        
-        p7.x += p7.vx;
-        p7.y += p7.vy;
-        p7.vy += 0.3;
-        
-        p8.x += p8.vx;
-        p8.y += p8.vy;
-        p8.vy += 0.3;
-        
-        p9.x += p9.vx;
-        p9.y += p9.vy;
-        p9.vy += 0.3;
-        
-        p10.x += p10.vx;
-        p10.y += p10.vy;
-        p10.vy += 0.3;
-        
-        p11.x += p11.vx;
-        p11.y += p11.vy;
-        p11.vy += 0.3;
-        
-        p12.x += p12.vx;
-        p12.y += p12.vy;
-        p12.vy += 0.3;
-        
-        p13.x += p13.vx;
-        p13.y += p13.vy;
-        p13.vy += 0.3;
-        
-        p14.x += p14.vx;
-        p14.y += p14.vy;
-        p14.vy += 0.3;
-        
-        p15.x += p15.vx;
-        p15.y += p15.vy;
-        p15.vy += 0.3;
-        
-        c.fillStyle = "#11aaaa";
-        c.fillRect(p1.x, p1.y, 5, 5);
-        c.fillRect(p2.x, p2.y, 5, 5);
-        c.fillRect(p3.x, p3.y, 5, 5);
-        c.fillRect(p4.x, p4.y, 5, 5);
-        c.fillRect(p5.x, p5.y, 5, 5);
-        c.fillRect(p6.x, p6.y, 5, 5);
-        c.fillRect(p7.x, p7.y, 5, 5);
-        c.fillRect(p8.x, p8.y, 5, 5);
-        c.fillRect(p9.x, p9.y, 5, 5);
-        c.fillRect(p10.x, p10.y, 5, 5);
-        c.fillRect(p11.x, p11.y, 5, 5);
-        c.fillRect(p12.x, p12.y, 5, 5);
-        c.fillRect(p13.x, p13.y, 5, 5);
-        c.fillRect(p14.x, p14.y, 5, 5);
-        c.fillRect(p15.x, p15.y, 5, 5);
+        for(i = 0; i < p.length; i++) {
+            p[i].x += p[i].vx;
+            p[i].y += p[i].vy;
+            p[i].vy += 0.3;
+            
+            c.fillStyle = "#11aaaa";
+            c.fillRect(p[i].x, p[i].y, 5, 5);
+        }
         
         gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
         gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
