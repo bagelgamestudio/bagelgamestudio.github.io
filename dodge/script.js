@@ -106,6 +106,36 @@ window.onload = function() {
       p14.y = player.y;
       p15.x = player.x;
       p15.y = player.y;
+      p1.vx = Math.random()*10 - 5;
+      p1.vy = Math.random()*-10;
+      p2.vx = Math.random()*10 - 5;
+      p2.vy = Math.random()*-10;
+      p3.vx = Math.random()*10 - 5;
+      p3.vy = Math.random()*-10;
+      p4.vx = Math.random()*10 - 5;
+      p4.vy = Math.random()*-10;
+      p5.vx = Math.random()*10 - 5;
+      p5.vy = Math.random()*-10;
+      p6.vx = Math.random()*10 - 5;
+      p6.vy = Math.random()*-10;
+      p7.vx = Math.random()*10 - 5;
+      p7.vy = Math.random()*-10;
+      p8.vx = Math.random()*10 - 5;
+      p8.vy = Math.random()*-10;
+      p9.vx = Math.random()*10 - 5;
+      p9.vy = Math.random()*-10;
+      p10.vx = Math.random()*10 - 5;
+      p10.vy = Math.random()*-10;
+      p11.vx = Math.random()*10 - 5;
+      p11.vy = Math.random()*-10;
+      p12.vx = Math.random()*10 - 5;
+      p12.vy = Math.random()*-10;
+      p13.vx = Math.random()*10 - 5;
+      p13.vy = Math.random()*-10;
+      p14.vx = Math.random()*10 - 5;
+      p14.vy = Math.random()*-10;
+      p15.vx = Math.random()*10 - 5;
+      p15.vy = Math.random()*-10;
   }
   
   document.body.addEventListener('keydown', function(e) {
