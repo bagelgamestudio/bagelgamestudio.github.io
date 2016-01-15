@@ -1,9 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>bagelgamestudio</title>
+    <title>Bagel Games</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <style>
+      .gamefeat {
+        margin-bottom: 10px;
+        height: 104px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        background-color: #f5f5f5;
+      }
+      
+      .thumbnail {
+        position: absolute;
+        height: 100px;
+      }
+      
+      .gamehead {
+        position: relative;
+        left: 110px;
+        top: -15px;
+        text-decoration: underline;
+      }
+      
+      .pdiv {
+        position: relative;
+        left: 110px;
+        top: -20px;
+        margin-right: 100px;
+      }
+    </style>
   </head>
   <body>
-    <h1>bagelgamestudio</h1>
+    <div class="container">
+      <div class="jumbotron" style="background: transparent; text-align: center; font-family: 'Audiowide', cursive">
+        <h1>Bagel Games</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="gamefeat">
+        <a href="bagelgamestudio.github.io/dodge/"><img class="thumbnail" src="thumbnails/dodgeThumbnail.jpg"></a>
+        <h3 class="gamehead">Dodging Lasers</h3>
+        <div class="pdiv">
+          <p class="lead">In this game, two lasers come at you from random sides, each with a hole in the middle. Go through the holes and dodge the lasers to try and beat your previous score!</p>
+        </div>
+      </div>
+      <div class="gamefeat">
+        <a href="bagelgamestudio.github.io/brumblehum/"><img class="thumbnail" src="thumbnails/brumblehumThumbnail.png"></a>
+        <h3 class="gamehead">Brumblehum</h3>
+        <div class="pdiv">
+          <p class="lead">This is an RPG / choose your own adventure game mixed with a 2 dimensional platformer. This game is currently a work in progress.</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

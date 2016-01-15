@@ -199,9 +199,6 @@ window.onload = function() {
     
     c.fillStyle = "#00aaaa";
     c.fillRect(player.x, player.y, player.width, player.height);
-    
-    c.fillStyle = "black";
-    c.fillText(gravity, 20, 20);
   }, 30);
 };
 //player still link: http://makepixelart.com/peoplepods/files/images/2100034.original.png
