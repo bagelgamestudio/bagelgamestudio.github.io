@@ -6,41 +6,53 @@ window.onload = function() {
   var countX = 0;
   var gravity = 0.5;
 	var i;
+	var x;
+	var y;
 	var willRunIntoL = 0;
 	var willRunIntoR = 0;
 	var willRunIntoG = 0;
 	var setY = 0;
 	
-	var level = ["0","0","0","0","0","1","0","0","0","0",
-	             "0","0","0","0","0","1","0","0","0","0",
-	             "1","1","1","1","0","1","1","0","0","0",
-	             "0","0","0","0","0","1","0","1","0","0",
-	             "0","1","1","1","1","1","0","0","0","1",
-	             "0","1","0","0","0","0","0","1","0","0",
-	             "0","0","0","0","0","0","1","0","1","1",
-	             "0","0","0","1","0","1","0","0","0","1",
-	             "0","1","0","0","0","0","0","0","0","1",
-	             "1","1","1","1","1","1","1","1","1","1",];
+	var level = ["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","2","2","2","1","1","0","1","1","1",
+	             "1","0","0","0","0","0","0","0","0","1","1","2","2","2","1","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","1","1","1","1","1","1","1","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","3","0","0","0","0","0","1","0","1",
+	             "1","0","0","0","0","0","0","1","0","0","1","3","0","0","0","0","0","1","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","1","2","1","1","0","0","1","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","0","0","0","0","0","1","1","0","1",
+	             "1","0","0","0","0","1","0","0","0","0","1","0","1","1","1","1","1","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","0","0","0","0","0","0","0","1","0","0","0","0","0","0","0","0","1",
+	             "1","0","0","1","0","0","0","0","0","0","1","1","2","0","2","0","2","0","0","1",
+	             "1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1",];
 	             
 	var curBoxG = {
 	  x: 0,
 	  y: 0,
-	  height: 40,
-	  width: 40
+	  height: 20,
+	  width: 20
 	};
 	
 	var curBoxL = {
 	  x: 0,
 	  y: 0,
-	  height: 40,
-	  width: 40
+	  height: 20,
+	  width: 20
 	};
 	
 	var curBoxR = {
 	  x: 0,
 	  y: 0,
-	  height: 40,
-	  width: 40
+	  height: 20,
+	  width: 20
 	};
   
   var player = {
@@ -51,18 +63,39 @@ window.onload = function() {
   };
   
   function checkCollision() {
-    for(var i = 0; i < level.length; i++) {
-      if(level[i] === "1") {
-        curBoxG.x = (i % 10)*40;
-        curBoxG.y = Math.floor(i/10)*40;
+    for(x = 0; x < level.length; x++) {
+      if(level[x] === "1") {
+        curBoxG.x = (x % 20) * 20;
+        curBoxG.y = Math.floor(x/20) * 20;
         
-        if(((player.y + player.height >= curBoxG.y) && (player.y + player.height <= curBoxG.y + curBoxG.height)) && ((player.x + player.width - 2 >= curBoxG.x) && (player.x + 2 <= curBoxG.x + curBoxG.width))) {
+        if(((player.y + player.height >= curBoxG.y) && (player.y + player.height <= curBoxG.y + (curBoxG.height/2))) && ((player.x + player.width - 2 >= curBoxG.x) && (player.x + 2 <= curBoxG.x + curBoxG.width))) {
       	  willRunIntoG = 1;
       	  setY = curBoxG.y;
         } else if(player.y + player.height >= canvas.height) {
           gravity = 0;
           player.y = canvas.height - player.height;
           willRunIntoG = 2;
+        } else if(((player.y <= curBoxG.y + curBoxG.height) && (player.y + player.height >= curBoxG.y + (curBoxG.height/2))) && ((player.x + player.width - 2 >= curBoxG.x) && (player.x + 2 <= curBoxG.x + curBoxG.width))) {
+          willRunIntoG = 2;
+          gravity = 0;
+          player.y = curBoxG.y + curBoxG.height + 1;
+        }
+      } else if(level[x] === "2") {
+        curBoxG.x = (x % 20) * 20;
+        curBoxG.y = Math.floor(x/20) * 20;
+        
+        if(((player.y + player.height - 2 >= curBoxG.y) && (player.y + player.height <= curBoxG.y + curBoxG.height) && (player.x + player.width - 2 >= curBoxG.x) && (player.x + 2 <= curBoxG.x + curBoxG.width))) {
+          player.x = 60;
+          player.y = 60;
+        }
+      } else if(level[x] === "3") {
+        curBoxG.x = (x % 20) * 20;
+        curBoxG.y = Math.floor(x/20) * 20;
+        
+        if(((player.y + player.height - 2 >= curBoxG.y) && (player.y + player.height <= curBoxG.y + curBoxG.height) && (player.x + player.width - 2 >= curBoxG.x) && (player.x + 2 <= curBoxG.x + curBoxG.width))) {
+          player.x = 60;
+          player.y = 60;
+          alert("Would send you to the next level if we had actual levels");
         }
       }
     }
@@ -90,23 +123,23 @@ window.onload = function() {
         	whileKeyDownX = setInterval(function() {
             for(i = 0; i < level.length; i++) {
               if(level[i] === "1") {
-                curBoxL.x = (i % 10)*40;
-                curBoxL.y = Math.floor(i/10)*40;
+                curBoxL.x = (i % 20) * 20;
+                curBoxL.y = Math.floor(i/20) * 20;
                 
-                if(((player.x + player.width - 1 >= curBoxL.x) && (player.x - 1 <= curBoxL.x + curBoxL.width)) && ((player.y + player.height - 1 >= curBoxL.y) && (player.y <= curBoxL.y + curBoxL.height - 1)) || (player.x <= 0)) {
+                if(((player.x - 1 <= curBoxL.x + curBoxL.width) && (player.x + player.width - 1 >= curBoxL.x)) && ((player.y + player.height - 1 >= curBoxL.y) && (player.y <= curBoxL.y + curBoxL.height - 1)) || (player.x <= 0)) {
                   willRunIntoL = 1;
                 }
-                if(willRunIntoL === 0) {
-                  player.x -= 0.05;
-          	    }
-          	    willRunIntoL = 0;
               }
             }
+            if(willRunIntoL === 0) {
+              player.x -= 2;
+      	    }
+      	    willRunIntoL = 0;
           }, 20);
       	}
         break;
     	case 38:
-        if(gravity === 0 || gravity === 0.2 || gravity === 0.1) {
+        if(gravity === 0) {
         	gravity = -3.5;
         }
         break;
@@ -114,20 +147,20 @@ window.onload = function() {
       	if(countX === 0) {
         	countX = 1;
         	whileKeyDownX = setInterval(function() {
-            for(i = 0; i < level.length; i++) {
-              if(level[i] === "1") {
-                curBoxR.x = (i % 10)*40;
-                curBoxR.y = Math.floor(i/10)*40;
+            for(y = 0; y < level.length; y++) {
+              if(level[y] === "1") {
+                curBoxR.x = (y % 20) * 20;
+                curBoxR.y = Math.floor(y/20) * 20;
                 
-                if(((player.x + player.width + 1 >= curBoxR.x) && (player.x + 1 <= curBoxR.x + curBoxR.width)) && ((player.y + player.height - 1 >= curBoxR.y) && (player.y <= curBoxR.y + curBoxR.height - 1)) || (player.x +player.width >= canvas.width)) {
+                if(((player.x + player.width + 1 >= curBoxR.x) && (player.x + 1 <= curBoxR.x + curBoxR.width)) && ((player.y + player.height - 1 >= curBoxR.y) && (player.y <= curBoxR.y + curBoxR.height - 1)) || (player.x + player.width >= canvas.width)) {
           	      willRunIntoR = 1;
           	    }
-                if(willRunIntoR === 0) {
-                  player.x += 0.05;
-                }
-                willRunIntoR = 0;
               }
             }
+            if(willRunIntoR === 0) {
+              player.x += 2;
+            }
+            willRunIntoR = 0;
         	}, 20);
         }
         break;
@@ -143,18 +176,26 @@ window.onload = function() {
   });
   
   setInterval(function() {
-    c.fillStyle = "rgba(255, 255, 255, 0.3)";
+    c.fillStyle = "rgba(255, 255, 255, 0.5)";
     c.fillRect(0, 0, canvas.width, canvas.height);
     
     for(i = 0; i < level.length; i++) {
       switch(level[i]) {
         case "1":
-          c.fillStyle = "#aa00aa";
-          c.fillRect((i % 10)*40, Math.floor(i/10)*40, 40, 40);
+          c.fillStyle = "#666";
+          c.fillRect((i % 20) * 20, Math.floor(i/20) * 20, 20, 20);
           break;
-        default:
+        case "2":
+          c.fillStyle = "#f33";
+          c.fillRect((i % 20) * 20, Math.floor(i/20) * 20, 20, 20);
+          break;
+        case "3":
+          c.fillStyle = "#3f3";
+          c.fillRect((i % 20) * 20, Math.floor(i/20) * 20, 20, 20);
+          break;
+          default:
+        }
       }
-    }
     
     c.fillStyle = "#00aaaa";
     c.fillRect(player.x, player.y, player.width, player.height);
