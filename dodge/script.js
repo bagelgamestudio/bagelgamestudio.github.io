@@ -103,7 +103,7 @@ window.onload = function() {
         }
         break;
       case 32:
-        if(player.alive === false) {
+        if(player.alive !== true) {
             player.alive = true;
             score = 0;
         }
