@@ -7,7 +7,7 @@ window.onload = function() {
   var keyAlreadyDownY = 0;
   var gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
   var gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
-  var speed = 1;
+  var speed = 3;
   var score = 0;
   var levelCounter = 0;
   var p = [];
@@ -55,8 +55,8 @@ window.onload = function() {
   };
   
   function addParticles() {
-      for(i = 0; i < 51; i++) {
-        p.push({x: player.x, y: player.y, vx: Math.random()*7 - 3.5, vy: Math.random()*-5});
+      for(i = 0; i < 10001; i++) {
+        p.push({x: player.x, y: player.y, vx: Math.random()*10 - 5, vy: Math.random()*-5});
       }
   }
   
@@ -189,9 +189,9 @@ window.onload = function() {
     		
             score++;
     		if(speed <= 5) {
-    			speed += 0.5;
+    			speed += 0.3;
     		} else if(speed <= 7.5){
-    			speed += 0.1;
+    			speed += 0.05;
     		}
     	}
     	
@@ -232,6 +232,14 @@ window.onload = function() {
             p[i].x += p[i].vx;
             p[i].y += p[i].vy;
             p[i].vy += 0.3;
+            if(Math.random() > 0.01) {
+              p[i].vx *= -1.01;
+              p[i].vy *= -1.01;
+            }
+            if(Math.random() > 0.02) {
+              p[i].vx += 10;
+              p[i].vy += 10;
+            }
             
             c.fillStyle = "#11aaaa";
             c.fillRect(p[i].x, p[i].y, 5, 5);
@@ -239,7 +247,7 @@ window.onload = function() {
         
         gapPosTop = Math.floor((Math.random() * canvas.width * 1 / 4) + (canvas.width / 4));
         gapPosLeft = Math.floor((Math.random() * canvas.height * 1 / 4) + (canvas.height / 4));
-        speed = 1;
+        speed = 3;
         levelCounter = 0;
   
         player = {
