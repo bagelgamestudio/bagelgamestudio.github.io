@@ -12,16 +12,13 @@ window.onload = function() {
   var levelCounter = 0;
   var p = [];
   var i;
-  var m = document.getElementById("music"); 
-    
-  m.play;
   
   var player = {
     x: canvas.width / 2 - 10,
     y: canvas.height / 2 - 10,
     width: 20,
     height: 20,
-    alive: false
+    alive: "kinda"
   };
   
   var crusher = {
@@ -224,10 +221,10 @@ window.onload = function() {
         
         c.fillStyle = "#00aaaa";
         c.fillRect(player.x, player.y, player.width, player.height);
-	} else {
-	    m.stop;
+	} else if(player.alive === false) {
 	    
         c.fillStyle = "black";
+        c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
         
@@ -285,6 +282,10 @@ window.onload = function() {
         	  direction: 1
           }
         };
+	} else {
+        c.fillStyle = "black";
+        c.font = "25px Courier New";
+        c.fillText("[Space to Start]", 120, 275);
 	}
   }, 30);
 };
