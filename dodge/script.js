@@ -1,6 +1,7 @@
 window.onload = function() {
   var canvas = document.getElementById("paper");
   var c = canvas.getContext("2d");
+  var music = document.getElementById("music");
   var keyDownX;
   var keyDownY;
   var keyAlreadyDownX = 0;
@@ -12,12 +13,14 @@ window.onload = function() {
   var levelCounter = 0;
   var p = [];
   var i;
+  var gamespeed = 30;
   
   var player = {
     x: canvas.width / 2 - 10,
     y: canvas.height / 2 - 10,
     width: 20,
     height: 20,
+    speed: 5,
     alive: "kinda"
   };
   
@@ -55,7 +58,7 @@ window.onload = function() {
   };
   
   function addParticles() {
-      for(i = 0; i < 10001; i++) {
+      for(i = 0; i < 101; i++) {
         p.push({x: player.x, y: player.y, vx: Math.random()*10 - 5, vy: Math.random()*-5});
       }
   }
@@ -67,9 +70,9 @@ window.onload = function() {
           keyAlreadyDownX = 1;
           keyDownX = setInterval(function() {
 			  if(player.x >= 0) {
-				player.x -= 5;
+				player.x -= player.speed;
 			  }
-          }, 30);
+          }, gamespeed);
         }
         break;
       case 38:
@@ -77,9 +80,9 @@ window.onload = function() {
           keyAlreadyDownY = 1;
           keyDownY = setInterval(function() {
 			  if(player.y >= 0) {
-				  player.y -= 5;  
+				  player.y -= player.speed;  
 			  }
-          }, 30);
+          }, gamespeed);
         }
         break;
       case 39:
@@ -87,9 +90,9 @@ window.onload = function() {
           keyAlreadyDownX = 1;
           keyDownX = setInterval(function() {
 			  if(player.x + player.width <= canvas.width) {
-				player.x += 5;
+				player.x += player.speed;
 			  }
-          }, 30);
+          }, gamespeed);
         }
         break;
       case 40:
@@ -97,15 +100,16 @@ window.onload = function() {
           keyAlreadyDownY = 1;
           keyDownY = setInterval(function() {
 			  if(player.y + player.width <= canvas.height) {
-				  player.y += 5;
+				  player.y += player.speed;
 			  }
-          }, 30);
+          }, gamespeed);
         }
         break;
       case 32:
         if(player.alive !== true) {
             player.alive = true;
             score = 0;
+            music.play();
         }
         break;
       default:
@@ -187,30 +191,39 @@ window.onload = function() {
     		
     		levelCounter = 0;
     		
-            score++;
+        score++;
+        gamespeed /= 1.05;
     		if(speed <= 5) {
-    			speed += 0.3;
+    			speed += 0.2;
     		} else if(speed <= 7.5){
     			speed += 0.05;
     		}
     	}
-    	
+
         c.fillStyle = "black";
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 40, 40);
     	
     	if((player.x + player.width >= crusher.top.left.x) && (player.x <= crusher.top.left.x + crusher.top.left.width) && (player.y + player.width >= crusher.top.left.y) && (player.y <= crusher.top.left.y + crusher.top.left.height)) {
     	    player.alive = false;
-            addParticles();
+    	    music.pause(); 
+    	    music.load();
+          addParticles();
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
-            addParticles();
+          music.pause(); 
+          music.load();
+          addParticles();
         } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
-            player.alive = false;
-            addParticles();
+          player.alive = false;
+          music.pause(); 
+          music.load();
+          addParticles();
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
-            player.alive = false;
-            addParticles();
+          player.alive = false;
+          music.pause(); 
+          music.load();
+          addParticles();
         }
         
     	c.fillStyle = "#ff6666";
@@ -232,14 +245,7 @@ window.onload = function() {
             p[i].x += p[i].vx;
             p[i].y += p[i].vy;
             p[i].vy += 0.3;
-            if(Math.random() > 0.01) {
-              p[i].vx *= -1.01;
-              p[i].vy *= -1.01;
-            }
-            if(Math.random() > 0.02) {
-              p[i].vx += 10;
-              p[i].vy += 10;
-            }
+
             
             c.fillStyle = "#11aaaa";
             c.fillRect(p[i].x, p[i].y, 5, 5);
@@ -255,6 +261,7 @@ window.onload = function() {
             y: canvas.height / 2 - 10,
             width: 20,
             height: 20,
+            speed: 5,
             alive: false
         };
   
@@ -295,5 +302,5 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("[Space to Start]", 120, 275);
 	}
-  }, 30);
+  }, gamespeed);
 };
