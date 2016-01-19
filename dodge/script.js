@@ -14,6 +14,7 @@ window.onload = function() {
   var p = [];
   var i;
   var gamespeed = 30;
+  var highScore = localStorage.getItem(highScore);
   
   var player = {
     x: canvas.width / 2 - 10,
@@ -240,7 +241,12 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
+        c.fillText("Highscore: " + highScore, 130, 300);
         gamespeed = 30;
+        if (score <= highScore){
+          highScore = score;
+          localStorage.setItem(highScore, highScore)
+        }
         for(i = 0; i < p.length; i++) {
             p[i].x += p[i].vx;
             p[i].y += p[i].vy;
@@ -301,6 +307,7 @@ window.onload = function() {
         c.fillStyle = "black";
         c.font = "25px Courier New";
         c.fillText("[Space to Start]", 120, 275);
+        c.fillText("Highscore: " + highScore, 130, 300);
 	}
   }, gamespeed);
 };
