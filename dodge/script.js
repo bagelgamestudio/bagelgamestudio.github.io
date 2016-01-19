@@ -194,9 +194,9 @@ window.onload = function() {
         score++;
         gamespeed /= 1.05;
     		if(speed <= 5) {
-    			speed += 0.2;
+    			speed += 0.3;
     		} else if(speed <= 7.5){
-    			speed += 0.05;
+    			speed += 0.07;
     		}
     	}
 
@@ -240,12 +240,12 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
-        
+        gamespeed = 30;
         for(i = 0; i < p.length; i++) {
             p[i].x += p[i].vx;
             p[i].y += p[i].vy;
             p[i].vy += 0.3;
-
+          
             
             c.fillStyle = "#11aaaa";
             c.fillRect(p[i].x, p[i].y, 5, 5);
