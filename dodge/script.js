@@ -14,7 +14,7 @@ window.onload = function() {
   var p = [];
   var i;
   var gamespeed = 30;
-  var highScore = localStorage.getItem(highScore);
+  var highScore = localStorage.getItem(highScoreSaved);/*global highScoreSaved*/
   
   var player = {
     x: canvas.width / 2 - 10,
@@ -210,36 +210,37 @@ window.onload = function() {
     	    music.pause(); 
     	    music.load();
           addParticles();
-          if (score <= highScore){
+          if (score <= highScore || highScore == null){
             highScore = score;
-            localStorage.setItem(highScore, highScore)
+            localStorage.setItem(highScoreSaved, highScore)
           }
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-         if (score <= highScore){
+         if (score <= highScore || highScore == null){
             highScore = score;
-            localStorage.setItem(highScore, highScore)
+            localStorage.setItem(highScoreSaved, highScore)
           }
         } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-          if (score <= highScore){
+          if (score <= highScore || highScore == null){
             highScore = score;
-            localStorage.setItem(highScore, highScore)
+            localStorage.setItem(highScoreSaved, highScore)
           }
+          
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-          if (score <= highScore){
+          if (score <= highScore || highScore == null){
             highScore = score;
-            localStorage.setItem(highScore, highScore)
+            localStorage.setItem(highScoreSaved, highScore)
           }
         }
         
