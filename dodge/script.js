@@ -194,9 +194,9 @@ window.onload = function() {
         score++;
         gamespeed /= 1.05;
     		if(speed <= 5) {
-    			speed += 0.3;
+    			speed += 0.5;
     		} else if(speed <= 7.5){
-    			speed += 0.07;
+    			speed += 0.1;
     		}
     	}
 
