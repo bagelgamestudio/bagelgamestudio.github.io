@@ -210,21 +210,37 @@ window.onload = function() {
     	    music.pause(); 
     	    music.load();
           addParticles();
+          if (score <= highScore){
+            highScore = score;
+            localStorage.setItem(highScore, highScore)
+          }
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
+         if (score <= highScore){
+            highScore = score;
+            localStorage.setItem(highScore, highScore)
+          }
         } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
+          if (score <= highScore){
+            highScore = score;
+            localStorage.setItem(highScore, highScore)
+          }
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
+          if (score <= highScore){
+            highScore = score;
+            localStorage.setItem(highScore, highScore)
+          }
         }
         
     	c.fillStyle = "#ff6666";
@@ -241,12 +257,8 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
-        c.fillText("Highscore: " + highScore, 130, 300);
+        c.fillText("Highscore: " + highScore, 150, 300);
         gamespeed = 30;
-        if (score <= highScore){
-          highScore = score;
-          localStorage.setItem(highScore, highScore)
-        }
         for(i = 0; i < p.length; i++) {
             p[i].x += p[i].vx;
             p[i].y += p[i].vy;
