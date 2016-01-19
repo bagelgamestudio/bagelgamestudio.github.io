@@ -258,7 +258,7 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
-        c.fillText("Highscore: " + highScore, 150, 300);
+        //c.fillText("Highscore: " + highScore, 150, 300);
         gamespeed = 30;
         for(i = 0; i < p.length; i++) {
             p[i].x += p[i].vx;
@@ -320,7 +320,7 @@ window.onload = function() {
         c.fillStyle = "black";
         c.font = "25px Courier New";
         c.fillText("[Space to Start]", 120, 275);
-        c.fillText("Highscore: " + highScore, 130, 300);
+        //c.fillText("Highscore: " + highScore, 130, 300);
 	}
   }, gamespeed);
 };
