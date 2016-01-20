@@ -14,7 +14,6 @@ window.onload = function() {
   var p = [];
   var i;
   var gamespeed = 30;
-<<<<<<< HEAD
   var highScore = localStorage.getItem("highScoreSaved"); /*global highScoreSaved*/
   
   
@@ -23,9 +22,6 @@ window.onload = function() {
   } else {
       localStorage.clickcount = 0;
   }
-=======
-  //var highScore = localStorage.getItem(highScoreSaved);/*global highScoreSaved*/
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
   
   var player = {
     x: canvas.width / 2 - 10,
@@ -221,66 +217,38 @@ window.onload = function() {
     	    music.pause(); 
     	    music.load();
           addParticles();
-<<<<<<< HEAD
           if (score >= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
           }
-=======
-          //if (score <= highScore || highScore == null){
-            //highScore = score;
-            //localStorage.setItem(highScoreSaved, highScore)
-          //}
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-<<<<<<< HEAD
          if (score >= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
           }
-=======
-         //if (score <= highScore || highScore == null){
-            //highScore = score;
-            //localStorage.setItem(highScoreSaved, highScore)
-          //}
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
         } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-<<<<<<< HEAD
-          if (score >= highScore || highScore === null){
+          if (score <= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
           }
-=======
-          //if (score <= highScore || highScore == null){
-            //highScore = score;
-            //localStorage.setItem(highScoreSaved, highScore)
-          //}
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
           
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-<<<<<<< HEAD
-          if (score >= highScore || highScore === null){
+          if (score <= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
           }
-=======
-          //if (score <= highScore || highScore == null){
-            //highScore = score;
-            //localStorage.setItem(highScoreSaved, highScore)
-          //}
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
         }
         
     	c.fillStyle = "#ff6666";
@@ -297,14 +265,9 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
-<<<<<<< HEAD
         c.fillText("Highscore: " + highScore, 160, 310);
         gamespeed = 30;
         
-=======
-        //c.fillText("Highscore: " + highScore, 150, 300);
-        gamespeed = 30;
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
         for(i = 0; i < p.length; i++) {
             p[i].x += p[i].vx;
             p[i].y += p[i].vy;
@@ -365,14 +328,7 @@ window.onload = function() {
         c.fillStyle = "black";
         c.font = "25px Courier New";
         c.fillText("[Space to Start]", 120, 275);
-<<<<<<< HEAD
         c.fillText("Highscore: " + highScore, 160, 310);
 	}
   }, gamespeed);
 };
-=======
-        //c.fillText("Highscore: " + highScore, 130, 300);
-	}
-  }, gamespeed);
-};
->>>>>>> 4a2385918335271e4e6f63a0d1c6dd66c36755c7
