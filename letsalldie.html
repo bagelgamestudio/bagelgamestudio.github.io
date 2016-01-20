@@ -6,7 +6,6 @@
       canvas {
         padding-left: 0;
         padding-right: 0;
-        margin-top: 5%;
         margin-left: auto;
         margin-right: auto;
         display: block;
@@ -24,8 +23,19 @@
             canvas.addEventListener('mousemove', function(evt) {
               mousePos = getMousePos(canvas, evt);
             }, false);
-            for(i = 0; i < 40; i++) {
-              p.push({x: mousePos.x, y: mousePos.y, vx: Math.random()*10 - 5, vy: Math.random()*-5 + 10 , life: 100, color: {r: Math.floor(Math.random()*55), g:Math.floor(Math.random()*55) , b: Math.floor(Math.random()*255)}});
+            for(i = 0; i < 30; i++) {
+              p.push({
+                x: mousePos.x, 
+                y: mousePos.y, 
+                vx: Math.random()*20 - 10, 
+                vy: Math.random()*10-7, 
+                life: 10, 
+                color: {
+                  r: Math.floor(Math.random()*255), 
+                  g: Math.floor(Math.random()*255), 
+                  b: Math.floor(Math.random()*255)
+                }
+              });
             }
         }
         
@@ -62,8 +72,8 @@
       };
     </script>
   </head>
-  <body style="background-color: #000">
-    <canvas id="paper" height="500px" width="500px">Go use chrome, you digusting rat.</canvas>
+  <body style="background-color: #000; overflow: hidden;">
+    <canvas id="paper" height="1000" width="2000">Go use chrome, you digusting rat.</canvas>
     <script src="script.js"></script>
   </body>
 </html>

@@ -11,19 +11,19 @@ var newToVillage = true;
 var hit = Math.floor(Math.random()*4 + 1);
 
 var monster = [
-  bear = {
+  {
     health: 15,
     damage: 5
   },
-  giantSnake = {
+  {
     health: 7,
     damage: 9
   },
-  giantEagle = {
+  {
     health: 10,
     damage: 7
   },
-  bandit = {
+  {
     health: 20,
     damage: 5
   }
