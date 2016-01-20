@@ -27,8 +27,8 @@
               p.push({
                 x: mousePos.x, 
                 y: mousePos.y, 
-                vx: Math.random()*20 - 10, 
-                vy: Math.random()*10-7, 
+                vx: Math.random()*10 - 5, 
+                vy: Math.random()*10 - 5, 
                 life: 10, 
                 color: {
                   r: Math.floor(Math.random()*255), 
@@ -55,9 +55,7 @@
       	  
               for(i = 0; i < p.length; i++) {
                   p[i].x += p[i].vx;
-                  p[i].vx *= 0.9;
                   p[i].y += p[i].vy;
-                  p[i].vy += 0.1;
                   p[i].life -= 1;
                   
                   if(p[i].life < 0) {
