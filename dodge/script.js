@@ -15,6 +15,7 @@ window.onload = function() {
   var i;
   var gamespeed = 30;
   var highScore = localStorage.getItem("highScoreSaved"); /*global highScoreSaved*/
+  var highName = localStorage.getItem("highNameSaved"); /*global highNameSaved*/
   
   
   if (localStorage.clickcount) {
@@ -220,6 +221,8 @@ window.onload = function() {
           if (score >= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
+            highName = prompt("You got a highscore! What is your name, nerd?");
+            localStorage.setItem("highNameSaved", highName);
           }
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
@@ -229,6 +232,8 @@ window.onload = function() {
          if (score >= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
+            highName = prompt("You got a highscore! What is your name, nerd?");
+            localStorage.setItem("highNameSaved", highName);
           }
         } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
           player.alive = false;
@@ -238,6 +243,8 @@ window.onload = function() {
           if (score <= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
+            highName = prompt("You got a highscore! What is your name, nerd?");
+            localStorage.setItem("highNameSaved", highName);
           }
           
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
@@ -248,6 +255,8 @@ window.onload = function() {
           if (score <= highScore || highScore === null){
             highScore = score;
             localStorage.setItem("highScoreSaved", highScore);
+            highName = prompt("You got a highscore! What is your name, nerd?");
+            localStorage.setItem("highNameSaved", highName);
           }
         }
         
