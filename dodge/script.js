@@ -209,46 +209,24 @@ window.onload = function() {
     	    music.pause(); 
     	    music.load();
           addParticles();
-          if (score >= highScore || highScore === null){
-            highScore = score;
-            localStorage.setItem("highScoreSaved", highScore);
-            highName = prompt("You got a highscore! What is your name, nerd?");
-            localStorage.setItem("highNameSaved", highName);
-          }
     	} else if((player.x + player.width >= crusher.top.right.x) && (player.x <= crusher.top.right.x + crusher.top.right.width) && (player.y + player.width >= crusher.top.right.y) && (player.y <= crusher.top.right.y + crusher.top.right.height)) {
     	    player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-         if (score >= highScore || highScore === null){
-            highScore = score;
-            localStorage.setItem("highScoreSaved", highScore);
-            highName = prompt("You got a highscore! What is your name, nerd?");
-            localStorage.setItem("highNameSaved", highName);
-          }
-        } else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
+    	}
+    	} else if((player.x + player.width >= crusher.left.top.x) && (player.x <= crusher.left.top.x + crusher.left.top.width) && (player.y + player.width >= crusher.left.top.y) && (player.y <= crusher.left.top.y + crusher.left.top.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-          if (score <= highScore || highScore === null){
-            highScore = score;
-            localStorage.setItem("highScoreSaved", highScore);
-            highName = prompt("You got a highscore! What is your name, nerd?");
-            localStorage.setItem("highNameSaved", highName);
-          }
+        }
           
         } else if((player.x + player.width >= crusher.left.bottom.x) && (player.x <= crusher.left.bottom.x + crusher.left.bottom.width) && (player.y + player.width >= crusher.left.bottom.y) && (player.y <= crusher.left.bottom.y + crusher.left.bottom.height)) {
           player.alive = false;
           music.pause(); 
           music.load();
           addParticles();
-          if (score <= highScore || highScore === null){
-            highScore = score;
-            localStorage.setItem("highScoreSaved", highScore);
-            highName = prompt("You got a highscore! What is your name, nerd?");
-            localStorage.setItem("highNameSaved", highName);
-          }
         }
         
     	c.fillStyle = "#ff6666";
@@ -265,7 +243,6 @@ window.onload = function() {
         c.font = "25px Courier New";
         c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
-        c.fillText("Highscore: " + highScore + "(by " + highName + ")", 160, 310);
         gamespeed = 30;
         
         for(i = 0; i < p.length; i++) {
@@ -328,7 +305,6 @@ window.onload = function() {
         c.fillStyle = "black";
         c.font = "25px Courier New";
         c.fillText("[Space to Start]", 120, 275);
-        c.fillText("Highscore: " + highScore + "(by " + highName + ")", 160, 310);
 	}
   }, gamespeed);
 };
