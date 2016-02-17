@@ -14,15 +14,6 @@ window.onload = function() {
   var p = [];
   var i;
   var gamespeed = 30;
-  var highScore = localStorage.getItem("highScoreSaved"); /*global highScoreSaved*/
-  var highName = localStorage.getItem("highNameSaved"); /*global highNameSaved*/
-  
-  
-  if (localStorage.clickcount) {
-      localStorage.highScoreSaved = Number(localStorage.highScoreSaved);
-  } else {
-      localStorage.clickcount = 0;
-  }
   
   var player = {
     x: canvas.width / 2 - 10,
