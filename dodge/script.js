@@ -191,7 +191,7 @@ window.onload = function() {
     		
     		levelCounter = 0;
     		
-        score++;
+        score += 5;
         gamespeed /= 1.05;
     		if(speed <= 5) {
     			speed += 0.5;
