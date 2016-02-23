@@ -191,7 +191,7 @@ window.onload = function() {
     		
     		levelCounter = 0;
     		
-        score += 5;
+        score++;
         gamespeed /= 1.05;
     		if(speed <= 5) {
     			speed += 0.5;
@@ -239,7 +239,7 @@ window.onload = function() {
 	    
         c.fillStyle = "black";
         c.font = "25px Courier New";
-        c.fillText("Score: " + score, 195, 245);
+        c.fillText("Score: 19", 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
         gamespeed = 30;
         
