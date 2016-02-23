@@ -239,7 +239,7 @@ window.onload = function() {
 	    
         c.fillStyle = "black";
         c.font = "25px Courier New";
-        c.fillText("Score: 19", 195, 245);
+        c.fillText("Score: " + score, 195, 245);
         c.fillText("[Space to Restart]", 120, 275);
         gamespeed = 30;
         
