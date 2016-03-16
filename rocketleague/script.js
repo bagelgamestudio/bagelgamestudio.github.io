@@ -49,6 +49,22 @@ window.onload = function() {
       x: 30,
       y: -15,
     },
+    bottomMost: {
+      x: 0,
+      y: 15,
+    },
+    topMost: {
+      x: 0,
+      y: -15,
+    },
+    leftMost: {
+      x: -30,
+      y: 0,
+    },
+    rightMost: {
+      x: 30,
+      y: 0,
+    },
     moveLeft: function() {
     
     },
@@ -95,7 +111,7 @@ window.onload = function() {
       c.rotate(-player1.d * Math.PI/180);
       c.translate(-player1.x - player1.width/2, -player1.y - player1.height/2);
     },
-    collision: function() {
+    findPoints: function() {
       
       var trPoint = rotatePoint([0, 0], [30, -15], ((player1.d) % 360)*Math.PI/180);
       player1.topRight.x = trPoint[0];
@@ -113,9 +129,28 @@ window.onload = function() {
       player1.bottomRight.x = brPoint[0];
       player1.bottomRight.y = brPoint[1];
       
-      return player1.d;
-      //Math.abs(player1.d % 360)
+      var bottom;
+      
+      if(player1.topLeft.y > player1.topRight.y) {
+        bottom = player1.topLeft;
+      } else if(player1.topRight.y > player1.topLeft.y) {
+        bottom = player1.topRight;
+      } else {
+        bottom = {
+          x: 0,
+          y: 15,
+        };
+      }
+      
+      if(bottom < player1.bottomLeft.y) {
+        bottom = player1.bottomLeft;
+      }
     },
+    collision: function() {
+      player1.findPoints();
+      
+      
+    }
   };
   
   
@@ -181,17 +216,17 @@ window.onload = function() {
     
     player1.draw();
     
-    c.fillStyle = "red";
-    c.fillRect(player1.x + 30 + player1.topRight.x - 5, player1.y + 15 + player1.topRight.y - 5, 10, 10);
+    c.fillStyle = "pink";
+    c.fillRect(player1.x + 30 + player1.topMost.x - 5, player1.y + 15 + player1.topMost.y - 5, 10, 10);
     
-    c.fillStyle = "green";
-    c.fillRect(player1.x + 30 + player1.topLeft.x - 5, player1.y + 15 + player1.topLeft.y - 5, 10, 10);
+    c.fillStyle = "pink";
+    c.fillRect(player1.x + 30 + player1.bottomMost.x - 5, player1.y + 15 + player1.bottomMost.y - 5, 10, 10);
     
-    c.fillStyle = "blue";
-    c.fillRect(player1.x + 30 + player1.bottomLeft.x - 5, player1.y + 15 + player1.bottomLeft.y - 5, 10, 10);
+    c.fillStyle = "pink";
+    c.fillRect(player1.x + 30 + player1.leftMost.x - 5, player1.y + 15 + player1.leftMost.y - 5, 10, 10);
     
-    c.fillStyle = "yellow";
-    c.fillRect(player1.x + 30 + player1.bottomRight.x - 5, player1.y + 15 + player1.bottomRight.y - 5, 10, 10);
+    c.fillStyle = "pink";
+    c.fillRect(player1.x + 30 + player1.rightMost.x - 5, player1.y + 15 + player1.rightMost.y - 5, 10, 10);
     
     c.fillStyle = "white";
     c.strokeStyle = "white";
