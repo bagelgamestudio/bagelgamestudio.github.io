@@ -1,0 +1,121 @@
+
+canvas {
+  width: 800px;
+  height: 500px;
+  border: 5px solid #666;
+}
+  
+#splashImage {
+  visibility: hidden;
+}
+  
+#b1 {
+  position: relative;
+  top: -155px;
+  left: -5px;
+  height: 40px;
+  width: 200px;
+  background: linear-gradient(to right, rgba(70, 173, 230,1), rgba(156, 173, 230, 0));
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, rgba(70, 173, 230, 1) 0%, rgba(156, 173, 230, 0) 100%);
+  border-image-slice: 1;
+  border-right: 0px solid #fff;
+  font-weight: bold;
+  font-size: 20px;
+  font-style: italic;
+  color: #fff;
+  font-family: 'Oswald', cursive;
+  letter-spacing: 4px;
+  transform: skewX(-20deg);
+}
+  
+#b2 {
+  position: relative;
+  top: -120px;
+  left: -210px;
+  height: 40px;
+  width: 200px;
+  background: linear-gradient(to right, rgba(70, 173, 230,1), rgba(156, 173, 230, 0));
+  border: 5px solid transparent;
+  border-image: linear-gradient(to right, rgba(70, 173, 230, 1) 0%, rgba(156, 173, 230, 0) 100%);
+  border-image-slice: 1;
+  border-right: 0px solid #fff;
+  font-weight: bold;
+  font-size: 20px;
+  font-style: italic;
+  color: #fff;
+  font-family: 'Oswald', cursive;
+  letter-spacing: 4px;
+  transform: skewX(-20deg);
+}
+  
+#b2:hover {
+  background: linear-gradient(to right, rgba(70, 173, 230,1), rgba(76, 173, 230, 0.2));
+}
+
+#b1:hover {
+  background: linear-gradient(to right, rgba(70, 173, 230,1), rgba(76, 173, 230, 0.2));
+}
+    
+.coverup {
+  position: relative;
+  background-color: #FFF;
+  height: 500px;
+  width: 20px;
+  border-right: 5px solid #666;
+  left: -20px;
+  top: -550px;
+  z-index: 3;
+}
+
+#instructionsDiv {
+  visibility: hidden;
+  position: relative;
+  top: -1000px;
+  left: 105px;
+  width: 600px;
+  height: 300px;
+  background-color: #85bfdf;
+  font-family: 'Oswald', cursive;
+  color: #fff;
+  border: 5px solid #659fcc;
+  border-radius: 10px;
+}
+
+.descriptiontag {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 560px;
+}
+
+.controls {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+#exit-instructions {
+  position: relative;
+  top: -350px;
+  width: 1px;
+  font-size: 30px;
+  left: 580px;
+  cursor: pointer;
+}
+
+body { 
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

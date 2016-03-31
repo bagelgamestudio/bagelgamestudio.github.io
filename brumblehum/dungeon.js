@@ -211,7 +211,7 @@ window.onload = function() {
           c.fillRect((i % 20) * 20, Math.floor(i/20) * 20, 20, 20);
           break;
         case "4":
-          enemies.push({x: (i % 20) * 20, y: Math.floor(i/20) * 20, height: 10, width: 10});
+          //enemies.push({x: (i % 20) * 20, y: Math.floor(i/20) * 20, height: 10, width: 10});
           setInterval(enemyGravity, 100);
           break;
           default:

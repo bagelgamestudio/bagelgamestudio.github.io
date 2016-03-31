@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="script.js"></script>
+    <title>Penguin Platformer</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+  </head>
+  <body>
+    
+    <canvas id="paper" width="800px" height="500px"></canvas>
+    
+    <div>
+      <button id="b1" onclick="play();">PLAY</button>
+      <button id="b2" onclick='document.getElementById("instructionsDiv").style.visibility = "visible";'>INSTRUCTIONS</button>
+      <div class="coverup"></div>
+    </div>
+    
+    <div id="instructionsDiv">
+      <p class="descriptiontag">You play as a penguin trying to get revenge on some politicians for melting your home and worsening global warming beyond the point of return. Jump over hurtles, slide under obstacles, and bash through enemies in this thrilling platformer.</p>
+      <img class="controls" src="textures/instructions.png"></img>
+      <p id="exit-instructions" onclick='document.getElementById("instructionsDiv").style.visibility = "hidden";'>X</p>
+    </div>
+    
+    <img src="textures/splash.jpg" id="splashImage"></img>
+    
+  </body>
+</html>
